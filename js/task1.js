@@ -15,7 +15,7 @@ Input: 123456789 Output: 987654321*/
 function descendingOrder(n) {
   let resultStr = '';
   const numToArray = String(n).split('');
-  const resultArr = numToArray.sort(function(a, b) {
+  const resultArr = numToArray.sort(function (a, b) {
     return b - a;
   });
   for (const item of resultArr) {
@@ -26,3 +26,9 @@ function descendingOrder(n) {
 
 console.log(descendingOrder(25563));
 
+//оптимальное решение:
+function descendingOrder1(n) {
+  return +(n + '').split('').sort().reverse().join('');
+}
+
+console.log(descendingOrder1(25563));
