@@ -1,13 +1,28 @@
-/*Напишите код, выполнив задание из каждого пункта отдельной строкой:
+/*Your task is to make a function that can take any non-negative integer as an
+argument and return it with its digits in descending order. Essentially,
+rearrange the digits to create the highest possible number.
 
-Создайте пустой объект user.
-Добавьте свойство name со значением John.
-Добавьте свойство surname со значением Smith.
-Измените значение свойства name на Pete.
-Удалите свойство name из объекта.*/
-const user = {};
-user.name = 'John';
-user.surname = 'Smith';
-user.name = 'Pete';
-delete user.name;
-console.log(user);
+  Examples:
+Input: 21445 Output: 54421
+
+Input: 145263 Output: 654321
+
+Input: 123456789 Output: 987654321*/
+// const array=[25, 25, 2, 2,36]
+// const result = array.sort(function(a,b){
+//   return b-a;
+// });
+function descendingOrder(n) {
+  let resultStr = '';
+  const numToArray = String(n).split('');
+  const resultArr = numToArray.sort(function(a, b) {
+    return b - a;
+  });
+  for (const item of resultArr) {
+    resultStr += item;
+  }
+  return Number(resultStr);
+}
+
+console.log(descendingOrder(25563));
+
