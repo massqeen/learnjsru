@@ -28,3 +28,4 @@ let a;
 function countSheep(arrayOfSheep) {
   return arrayOfSheep.filter(Boolean).length;
 }*/
+/*let countSheep = (arrayOfSheep) => arrayOfSheep.reduce((sum, i)=>{return i == true ? sum+= 1 : sum }, 0);*/
