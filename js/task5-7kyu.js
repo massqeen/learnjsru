@@ -30,5 +30,13 @@ function busTimer(time) {
   return pushTime().find((item) => item >= userTime) - userTime;
 }
 
-console.log(busTimer('23:59'));
+console.log(busTimer('09:56'));
 let a;
+/*Best practice
+function busTimer(time) {
+  let [h,m] = time.split`:`.map(Number)
+  let t = (5+h*60+m)%1440
+  let x = t<360?360:15
+  return (x-t%x)%x
+}
+*/
