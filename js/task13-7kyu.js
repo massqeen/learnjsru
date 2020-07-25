@@ -9,14 +9,27 @@ function solve(a, b) {
     return [a, b];
   }
   if (a >= 2 * b) {
-    a = a - 2 * b;
+    a = a - Math.floor(a / (b * 2)) * b * 2;
     return solve(a, b);
   }
   if (b >= 2 * a) {
-    b = b - 2 * a;
+    b = b - Math.floor(b / (a * 2)) * a * 2;
     return solve(a, b);
   }
   return [a, b];
 }
-console.log(solve(100000000000, 3));
+console.log(solve(2, 10));
 let a;
+/*BEST PRACTICE
+function solve(a, b) {
+  while (a && b) {
+    if (a >= (2 * b)) {
+      a %= 2 * b;
+    } else if (b >= (2 * a)) {
+      b %= 2 * a;
+    } else {
+      return [a, b];
+    }
+  }
+  return [a, b];
+}*/
