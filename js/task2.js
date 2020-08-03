@@ -1,21 +1,9 @@
-/*Напишите функцию isEmpty(obj), которая возвращает true, если у объекта нет свойств, иначе false.
+/*Найдите время
+Время имеет формат: часы:минуты. И часы, и минуты имеют две цифры, например, 09:00.
+Введите регулярное выражение, чтобы найти время в строке: Завтрак в 09:00 в комнате 123:456.
+P.S. В этой задаче пока нет необходимости проверять правильность времени, поэтому 25:99 также может быть верным результатом.
+P.P.S. Регулярное выражение не должно находить 123:456.*/
 
-Должно работать так:
-let schedule = {};
-
-alert( isEmpty(schedule) ); // true
-
-schedule["8:30"] = "get up";
-
-alert( isEmpty(schedule) ); // false*/
-
-const schedule = {};
-const isEmpty = (obj) => {
-  const empty = Object.keys(obj).length === 0 ? true : false;
-  return empty;
-};
-console.log(schedule);
-console.log(isEmpty(schedule));
-schedule['8:30'] = 'get up';
-console.log(schedule);
-console.log(isEmpty(schedule));
+let str = 'Завтрак в 09:00 в комнате 123:456 привет';
+const regexp = /\b\d{2}:\d{2}\b/g;
+console.log(str.match(regexp));

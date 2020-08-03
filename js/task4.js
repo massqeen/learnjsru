@@ -1,36 +1,12 @@
-/*Создайте функцию multiplyNumeric(obj), которая умножает все числовые свойства объекта obj на 2.
-Например:
+/*Время может быть в формате часы:минуты или часы-минуты. И часы, и минуты имеют
+ две цифры: 09:00 или 21-30.
+Напишите регулярное выражение, чтобы найти время:
+let regexp = /your regexp/g;
+alert( "Завтрак в 09:00. Ужин в 21-30".match(regexp) ); // 09:00, 21-30
+P.S. В этой задаче мы предполагаем, что время всегда правильное, нет
+необходимости отфильтровывать плохие строки, такие как «45:67».
+Позже мы разберёмся с этим.*/
 
-// до вызова функции
-let menu = {
-  width: 200,
-  height: 300,
-  title: "My menu"
-};
-
-multiplyNumeric(menu);
-
-// после вызова функции
-menu = {
-  width: 400,
-  height: 600,
-  title: "My menu"
-};
-Обратите внимание, что multiplyNumeric не нужно ничего возвращать. Следует напрямую изменять объект.
-
-P.S. Используйте typeof для проверки, что значение свойства числовое.*/
-const menu = {
-  width: 200,
-  height: 300,
-  title: 'My menu'
-};
-
-const multiplyNumeric = (obj) => {
-  for (const key in obj) {
-    if (typeof obj[key] == 'number') {
-      obj[key] *= 2;
-    }
-  }
-};
-multiplyNumeric(menu);
-console.log(menu);
+let str = 'Завтрак в 09:00. Ужин в 21-30';
+const regexp = /\b\d{2}[:-]\d{2}\b/g;
+console.log(str.match(regexp));
