@@ -14,19 +14,19 @@ const obj = {
   }
 };
 
-const deepClone = (obj) => {
-  // создаем массив ключей
-  const arrOfKeys = Object.keys(obj); //["lat", "lng"]
-
-  return arrOfKeys.reduce((acc, key) => {
-    const value = obj[key]; // '29.4572', '-164.2990'
-    // проверяем если значение равно объекту, то рекурсивно вызываем deepClone
-    if (typeof value === 'object') {
-      acc[key] = deepClone(value);
+const deepCloneObj = (obj) => {
+  return Object.keys(obj).reduce((acc, itemArr) => {
+    if (typeof obj[itemArr] === 'object') {
+      acc[itemArr] = deepCloneObj(obj[itemArr]);
       return acc;
     }
-    acc[key] = value; // acc = { lat: '29.4572' }; // acc = { lat: '29.4572', lng: '-164.2990' };
-
+    acc[itemArr] = obj[itemArr];
     return acc;
   }, {});
 };
+let clonedObj = deepCloneObj(obj);
+let copiedObj = new Object(obj);
+obj.address.street = 'street';
+console.log(obj);
+console.log(clonedObj);
+console.log(copiedObj);
