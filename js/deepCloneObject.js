@@ -15,18 +15,19 @@ const obj = {
 };
 
 const deepCloneObj = (obj) => {
-  return Object.keys(obj).reduce((acc, itemArr) => {
-    if (typeof obj[itemArr] === 'object') {
-      acc[itemArr] = deepCloneObj(obj[itemArr]);
+  return Object.keys(obj).reduce((acc, key) => {
+    if (typeof obj[key] === 'object') {
+      acc[key] = deepCloneObj(obj[key]);
       return acc;
     }
-    acc[itemArr] = obj[itemArr];
+    acc[key] = obj[key];
     return acc;
   }, {});
 };
+
 let clonedObj = deepCloneObj(obj);
 let copiedObj = new Object(obj);
 obj.address.street = 'street';
-console.log(obj);
-console.log(clonedObj);
-console.log(copiedObj);
+console.log('obj:', obj);
+console.log('clonedObj:', clonedObj);
+console.log('copiedObj:', copiedObj);
