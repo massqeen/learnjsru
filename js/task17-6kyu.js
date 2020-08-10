@@ -7,30 +7,35 @@ solve(10) = 9
 solve(48) = 48. Note that 39 is also an option, but 48 is larger.
 Input range is 0 < n < 1e11*/
 const solve = (n) => {
-  const sum = (number) => {
+  const sumOfDigits = (number) => {
     return String(number)
       .split('')
       .reduce((acc, item) => {
         return acc + +item;
       }, 0);
   };
-  let max = sum(n);
+  let max = sumOfDigits(n);
   let b = 1;
   result = n;
-  while (n !== 0) {
-    let current = (n - 1) * b + (b - 1);
-    let currentSum = sum(current);
-    if (currentSum > max) {
-      max = currentSum;
+  let current = n;
+  while (String(current).length > String(n).length - 2) {
+    // let current = (n - 1) * b + (b - 1);
+    current -= 1;
+    let currentSumOfDigits = sumOfDigits(current);
+    if (
+      currentSumOfDigits > max ||
+      (currentSumOfDigits === max && current > result)
+    ) {
+      max = currentSumOfDigits;
       result = current;
     }
-    n /= 10;
-    b *= 10;
+    // n /= 10;
+    // b *= 10;
   }
   return result;
 };
 
-console.log(solve(19930));
+console.log(solve(92063948914));
 //79320 - 78999
 //29652 - 28999
 //99737 - 98999
